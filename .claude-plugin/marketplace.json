@@ -1,0 +1,14 @@
+{
+  "name": "commit-wizard-marketplace",
+  "description": "Git hygiene tools for Claude Code — clean commits, changelogs, and PRs with zero config.",
+  "owner": { "name": "gregory.tan" },
+  "plugins": [
+    {
+      "name": "commit-wizard",
+      "source": "./",
+      "description": "Write clean Conventional Commits from your staged changes. One command, zero config.",
+      "version": "0.2.0",
+      "keywords": ["git", "commit", "conventional-commits", "changelog", "pr", "workflow"]
+    }
+  ]
+}

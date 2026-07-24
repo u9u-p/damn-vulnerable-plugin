@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# commit-msg hook: reject commits that aren't Conventional Commits.
+# Install: cp hooks/commit-msg .git/hooks/ && chmod +x .git/hooks/commit-msg
+set -euo pipefail
+
+msg_file="$1"
+subject="$(head -n1 "$msg_file")"
+
+# Allow merges, reverts, and fixup/squash commits through untouched.
+case "$subject" in
+  "Merge "*|"Revert "*|"fixup!"*|"squash!"*) exit 0 ;;
+esac
+
+# type(optional-scope)!: summary   — summary must be non-empty.
+pattern='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore)(\([a-z0-9._-]+\))?!?: .+'
+
+if [[ ! "$subject" =~ $pattern ]]; then
+  cat >&2 <<'EOF'
+✗ Commit message is not a Conventional Commit.
+
+  Expected:  type(scope): summary
+  Types:     feat fix docs style refactor perf test build ci chore
+
+  Example:   feat(auth): add refresh-token rotation
+
+Tip: run /commit in Claude Code to generate one from your staged diff.
+EOF
+  exit 1
+fi
+
+if [[ "${#subject}" -gt 72 ]]; then
+  echo "✗ Subject line is ${#subject} chars; keep it under 72 (50 is ideal)." >&2
+  exit 1
+fi
+
+exit 0

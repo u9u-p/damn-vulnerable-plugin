@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "ask": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(./scripts/validate-plugin.sh)",
+      "Bash(git commit:*)",
+      "Bash(git reset:*)",
+      "Bash(git add:*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./scripts/setup.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

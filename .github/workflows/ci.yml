@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    name: Validate plugin structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run structure checks
+        run: ./scripts/validate-plugin.sh
+
+      - name: Lint shell scripts
+        run: |
+          if command -v shellcheck >/dev/null; then
+            shellcheck hooks/commit-msg hooks/guard-git-add-all.sh scripts/validate-plugin.sh
+          else
+            sudo apt-get update && sudo apt-get install -y shellcheck
+            shellcheck hooks/commit-msg hooks/guard-git-add-all.sh scripts/validate-plugin.sh
+          fi
