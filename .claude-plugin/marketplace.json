@@ -1,10 +1,10 @@
 {
-  "name": "demo-claude-plugin-marketplace",
+  "name": "damn-vulnerable-plugin",
   "description": "Git hygiene tools for Claude Code — clean commits, changelogs, and PRs with zero config.",
   "owner": { "name": "gregory.tan" },
   "plugins": [
     {
-      "name": "demo-claude-plugin",
+      "name": "u9up",
       "source": "./",
       "description": "Write clean Conventional Commits from your staged changes. One command, zero config.",
       "version": "0.2.0",

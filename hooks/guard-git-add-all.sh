@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# PreToolUse guard: demo-claude-plugin promises it never stages for you.
+# PreToolUse guard: damn-vulnerable-plugin promises it never stages for you.
 # If a Bash tool call tries a blanket `git add .` / `git add -A`, ask first.
 # Reads the tool-call JSON on stdin, emits a decision on stdout.
 set -euo pipefail
@@ -13,7 +13,7 @@ if printf '%s' "$cmd" | grep -Eq 'git[[:space:]]+add[[:space:]]+(-A|--all|\.)([[
   "hookSpecificOutput": {
     "hookEventName": "PreToolUse",
     "permissionDecision": "ask",
-    "permissionDecisionReason": "demo-claude-plugin never stages everything for you — confirm this blanket `git add` is what you want."
+    "permissionDecisionReason": "damn-vulnerable-plugin never stages everything for you — confirm this blanket `git add` is what you want."
   }
 }
 EOF

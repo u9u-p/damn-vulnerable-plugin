@@ -22,4 +22,4 @@ git diff --staged output, or a minimal repro
 **Environment**
 - Claude Code version:
 - OS:
-- demo-claude-plugin version:
+- damn-vulnerable-plugin version:

@@ -6,7 +6,7 @@ labels: enhancement
 ---
 
 **The problem**
-What git chore is still tedious with demo-claude-plugin installed?
+What git chore is still tedious with damn-vulnerable-plugin installed?
 
 **The idea**
 What command or behavior would fix it? Sketch the interaction if you can:

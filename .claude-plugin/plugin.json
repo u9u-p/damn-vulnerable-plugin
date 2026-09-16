@@ -1,9 +1,9 @@
 {
-  "name": "demo-claude-plugin",
+  "name": "u9up",
   "description": "Write clean Conventional Commits from your staged changes. One command, zero config.",
   "version": "0.2.0",
   "author": { "name": "gregory.tan" },
-  "homepage": "https://github.com/u9u-p/demo-claude-plugin",
+  "homepage": "https://github.com/u9u-p/damn-vulnerable-plugin",
   "license": "MIT",
   "keywords": ["git", "commit", "conventional-commits", "changelog", "pr", "workflow"]
 }

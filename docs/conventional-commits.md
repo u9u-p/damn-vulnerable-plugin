@@ -38,7 +38,7 @@ Use one, or both. Tooling keys off either.
 ## Scope
 
 An optional noun in parentheses describing the area of the codebase: `feat(parser):`,
-`fix(auth):`. Keep scopes consistent — demo-claude-plugin reads your recent history so new
+`fix(auth):`. Keep scopes consistent — damn-vulnerable-plugin reads your recent history so new
 commits reuse the scopes you already use.
 
 ## Why bother

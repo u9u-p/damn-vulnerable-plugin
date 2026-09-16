@@ -21,7 +21,7 @@
 
 
 
-# demo-claude-plugin
+# damn-vulnerable-plugin
 
 Stop writing `fix stuff` at 2am. Stage your changes, run `/commit`, get a clean
 [Conventional Commit](https://www.conventionalcommits.org/) message inferred
