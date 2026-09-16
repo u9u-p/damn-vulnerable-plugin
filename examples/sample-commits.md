@@ -1,6 +1,6 @@
-# Sample commits commit-wizard produces
+# Sample commits demo-claude-plugin produces
 
-Real diffs → the message commit-wizard infers. Use these to calibrate expectations.
+Real diffs → the message demo-claude-plugin infers. Use these to calibrate expectations.
 
 ---
 
@@ -50,5 +50,5 @@ chore(deps): bump esbuild to 0.21
 
 **Diff (splittable):** a new caching layer **and** an unrelated README typo fix.
 
-> commit-wizard flags this: two logical changes. It suggests
+> demo-claude-plugin flags this: two logical changes. It suggests
 > `git restore --staged README.md`, commit the cache, then commit the doc fix separately.

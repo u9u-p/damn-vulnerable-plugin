@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for wanting to make commit-wizard better. It's a small plugin; keep changes small too.
+Thanks for wanting to make demo-claude-plugin better. It's a small plugin; keep changes small too.
 
 ## Layout
 
