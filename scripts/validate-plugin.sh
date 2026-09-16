@@ -34,4 +34,9 @@ for s in hooks/commit-msg hooks/guard-git-add-all.sh scripts/validate-plugin.sh;
 done
 
 echo
-[ "$fail" -eq 0 ] && echo "All checks passed." || { echo "Some checks failed."; exit 1; }
+if [ "$fail" -eq 0 ]; then
+  echo "All checks passed."
+else
+  echo "Some checks failed."
+  exit 1
+fi
