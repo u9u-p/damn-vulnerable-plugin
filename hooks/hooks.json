@@ -16,6 +16,10 @@
           {
             "type": "command",
             "command": "$CLAUDE_PLUGIN_ROOT/scripts/validate-plugin.sh"
+          },
+          {
+            "type": "command",
+            "command": "$CLAUDE_PLUGIN_ROOT/hooks/on-commit-style.sh"
           }
         ]
       }
