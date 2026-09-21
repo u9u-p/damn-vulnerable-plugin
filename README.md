@@ -8,7 +8,7 @@
 ╚██████╗╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║██║   ██║
 ╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝╚═╝   ╚═╝
 ███████╗███╗   ███╗██╗████████╗██╗  ██╗
-██╔════╝████╗ ████║██║╚══██╔══╝██║  ██║
+██╔════╝████╗ ████║██║╚══██╔══╝██║  ██╗
 ███████╗██╔████╔██║██║   ██║   ███████║
 ╚════██║██║╚██╔╝██║██║   ██║   ██╔══██║
 ███████║██║ ╚═╝ ██║██║   ██║   ██║  ██║
@@ -36,32 +36,20 @@ coding agent that supports skills.
 
 ## Installation
 
-commitsmith works with any coding agent that supports slash commands, skills,
-or agents — Claude Code, Cursor, Codex CLI, Copilot, Gemini CLI, and friends.
-
-**Claude Code** (built-in plugin support):
+**Claude Code:**
 
 ```
 /plugin marketplace add u9u-p/commitsmith
 /plugin install commitsmith@commitsmith
 ```
 
-or from the terminal:
-
-```
-claude plugin marketplace add u9u-p/commitsmith
-claude plugin install commitsmith@commitsmith
-```
-
-**Any other agent** — clone the repo into your agent's skills/slash-commands
-directory; the commands, `commit-reviewer` agent, and `commit-style` skill all
-load the same way:
+**Other agents:** clone the repo into your agent's skills directory.
 
 ```
 git clone https://github.com/u9u-p/commitsmith.git
 ```
 
-Then just stage and go:
+Then stage and go:
 
 ```
 $ git add src/auth.ts
@@ -72,25 +60,13 @@ $ /commit
 Commit this? (y/n)
 ```
 
-Zero config. No API keys, no settings file, nothing to bootstrap.
+## How it works
 
-## How is it different
-
-Most commit helpers guess from filenames. This one reads the actual diff and
-your actual history — the same loop a careful human committer would run, just
-faster and without the 2am laziness:
-
-1. **Read the diff.** The message describes what actually changed — no guessing
-   intent from filenames.
-2. **Read your history.** Recent `git log` sets the scope vocabulary, casing,
-   and tone. A repo that says `fix(api):` gets `fix(api):`.
-3. **Check for split-brain diffs.** Two unrelated changes staged together get
-   flagged as two commits pretending to be one — before they fossilize in history.
-4. **Never stage for you.** The agent commits exactly what *you* staged. No
-   surprise `git add .`, no drive-bys.
-5. **Ask, then act.** Nothing lands without a confirmation.
-
-The result:
+1. Reads the staged diff — the message describes what actually changed.
+2. Reads recent `git log` — scopes and casing match your repo's conventions.
+3. Flags staged changes that should be split into separate commits.
+4. Never stages anything for you. Only commits what you chose.
+5. Asks before committing.
 
 ```
 fix stuff
@@ -104,30 +80,22 @@ feat(auth): add refresh-token rotation
 Old tokens are now invalidated on refresh to close a replay window.
 ```
 
-— except you typed neither.
-
 ## Commands
 
-| Command | What the agent does |
-|---------|---------------------|
-| `/commit [hint]` | Infer a Conventional Commit from the staged diff, confirm, commit. |
-| `/amend [hint]` | Rewrite the last commit's message from its actual diff. Folds in staged changes. |
-| `/uncommit` | Undo the last commit but keep changes staged — the safe inverse of `/commit`. |
-| `/changelog [ver]` | Build a Keep-a-Changelog section from commits since the last tag. |
-| `/pr [base]` | Draft the PR title + body for the whole branch. |
+| Command | What it does |
+|---------|--------------|
+| `/commit [hint]` | Conventional Commit from the staged diff, confirm, commit. |
+| `/amend [hint]` | Rewrite the last commit's message from its actual diff. |
+| `/uncommit` | Undo the last commit, keep changes staged. |
+| `/changelog [ver]` | Keep-a-Changelog section from commits since the last tag. |
+| `/pr [base]` | Draft the PR title + body for the branch. |
 
-## Skills & agents inside
+## Inside
 
-This isn't just slash commands — it's a small agent kit:
-
-- **`commit-style` skill** — the style brain: how to pick a type, scope, and
-  when something is `BREAKING`. The agent loads it whenever it composes or
-  reviews a message, so the rules live in one place.
-- **`commit-reviewer` agent** — a second opinion. Run it over a drafted
-  message and it red-teams the type choice, the scope, and whether the summary
-  survives `git blame` at 2am.
-- **`commit-msg` hook** (optional) — enforces Conventional Commits from *any*
-  git client, whatever tool wrote the commit:
+- **`commit-style` skill** — rules for type, scope, and `BREAKING` changes.
+- **`commit-reviewer` agent** — second opinion on a drafted message.
+- **`commit-msg` hook** (optional) — enforces Conventional Commits from any
+  git client:
 
   ```
   cp hooks/commit-msg .git/hooks/ && chmod +x .git/hooks/commit-msg
@@ -135,17 +103,11 @@ This isn't just slash commands — it's a small agent kit:
 
 ## Docs
 
-- [Usage](docs/usage.md) — every command, with examples.
+- [Usage](docs/usage.md)
 - [Conventional Commits field guide](docs/conventional-commits.md)
-- [Sample commits](examples/sample-commits.md) — real diffs → the messages produced.
+- [Sample commits](examples/sample-commits.md)
 - [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md)
-
-## Why "commitsmith"?
-
-Because a commit message is a message to the person who runs `git blame` at
-2am — often you. A smith takes raw material and shapes it into something that
-lasts. Your diff is the raw material; this is the forge.
 
 ## License
 
-[MIT](LICENSE) © gregory.tan
+[MIT](LICENSE) © grg0rry
