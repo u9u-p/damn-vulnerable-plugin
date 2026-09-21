@@ -36,22 +36,30 @@ coding agent that supports skills.
 
 ## Installation
 
-In Claude Code:
+commitsmith works with any coding agent that supports slash commands, skills,
+or agents — Claude Code, Cursor, Codex CLI, Copilot, Gemini CLI, and friends.
+
+**Claude Code** (built-in plugin support):
 
 ```
 /plugin marketplace add u9u-p/commitsmith
 /plugin install commitsmith@commitsmith
 ```
 
-Or from the terminal:
+or from the terminal:
 
 ```
 claude plugin marketplace add u9u-p/commitsmith
 claude plugin install commitsmith@commitsmith
 ```
 
-Using another agent? Clone the repo into your agent's skills/slash-commands
-directory and the commands, agent, and skill load the same way.
+**Any other agent** — clone the repo into your agent's skills/slash-commands
+directory; the commands, `commit-reviewer` agent, and `commit-style` skill all
+load the same way:
+
+```
+git clone https://github.com/u9u-p/commitsmith.git
+```
 
 Then just stage and go:
 
@@ -119,7 +127,7 @@ This isn't just slash commands — it's a small agent kit:
   message and it red-teams the type choice, the scope, and whether the summary
   survives `git blame` at 2am.
 - **`commit-msg` hook** (optional) — enforces Conventional Commits from *any*
-  git client, not just Claude Code:
+  git client, whatever tool wrote the commit:
 
   ```
   cp hooks/commit-msg .git/hooks/ && chmod +x .git/hooks/commit-msg
