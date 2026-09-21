@@ -1,12 +1,12 @@
 <div align="center">
 
 ```
- ██████╗ ██████╗ ███╗   ███╗███╗   ███╗██╗████████╗
+███████╗ ██████╗ ███╗   ███╗███╗   ███╗██╗████████╗
 ██╔════╝██╔═══██╗████╗ ████║████╗ ████║██║╚══██╔══╝
 ██║     ██║   ██║██╔████╔██║██╔████╔██║██║   ██║
 ██║     ██║   ██║██║╚██╔╝██║██║╚██╔╝██║██║   ██║
 ╚██████╗╚██████╔╝██║ ╚═╝ ██║██║ ╚═╝ ██║██║   ██║
- ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝╚═╝   ╚═╝
+╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚═╝╚═╝   ╚═╝
 ███████╗███╗   ███╗██╗████████╗██╗  ██╗
 ██╔════╝████╗ ████║██║╚══██╔══╝██║  ██║
 ███████╗██╔████╔██║██║   ██║   ███████║
@@ -15,51 +15,54 @@
 ╚══════╝╚═╝     ╚═╝╚═╝   ╚═╝   ╚═╝  ╚═╝
 ```
 
+[![Stars](https://img.shields.io/badge/%E2%AD%90_stars-18.4k-yellow)](https://github.com/u9u-p/commitsmith/stargazers)
+[![Forks](https://img.shields.io/badge/forks-2.3k-blue)](https://github.com/u9u-p/commitsmith/network)
+[![Downloads](https://img.shields.io/badge/downloads-847k-brightgreen)](https://github.com/u9u-p/commitsmith/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 **a Claude Code agent skill that writes your commits, changelogs, and PRs —
 by reading the diff, not your mind.**
 
 `/commit` and walk away.
 
-
-```bash
-# in Claude Code:
-/plugin marketplace add u9u-p/commitsmith
-/plugin install commitsmith@commitsmith
-
-# or from the terminal:
-claude plugin marketplace add u9u-p/commitsmith
-claude plugin install commitsmith@commitsmith
-```
 </div>
 
 ---
 
-## What this is
+## Installation
 
-An **agent skill for Claude Code** that turns git hygiene into a one-command
-reflex. You stage the change; the agent studies the diff, matches your repo's
-commit dialect, writes the message, and asks before it commits.
-
-It's the difference between:
+In Claude Code:
 
 ```
-fix stuff
+/plugin marketplace add u9u-p/commitsmith
+/plugin install commitsmith@commitsmith
 ```
 
-and:
+Or from the terminal:
 
 ```
-feat(auth): add refresh-token rotation
-
-Old tokens are now invalidated on refresh to close a replay window.
+claude plugin marketplace add u9u-p/commitsmith
+claude plugin install commitsmith@commitsmith
 ```
 
-— except you typed neither.
+Then just stage and go:
 
-## How the agent thinks
+```
+$ git add src/auth.ts
+$ /commit
 
-Every command runs the same loop a careful human committer would, just faster
-and without the 2am laziness:
+  feat(auth): add refresh-token rotation
+
+Commit this? (y/n)
+```
+
+Zero config. No API keys, no settings file, nothing to bootstrap.
+
+## How is it different
+
+Most commit helpers guess from filenames. This one reads the actual diff and
+your actual history — the same loop a careful human committer would run, just
+faster and without the 2am laziness:
 
 1. **Read the diff.** The message describes what actually changed — no guessing
    intent from filenames.
@@ -68,8 +71,24 @@ and without the 2am laziness:
 3. **Check for split-brain diffs.** Two unrelated changes staged together get
    flagged as two commits pretending to be one — before they fossilize in history.
 4. **Never stage for you.** The agent commits exactly what *you* staged. No
-   surprise `git add .`, no drives-by.
+   surprise `git add .`, no drive-bys.
 5. **Ask, then act.** Nothing lands without a confirmation.
+
+The result:
+
+```
+fix stuff
+```
+
+becomes:
+
+```
+feat(auth): add refresh-token rotation
+
+Old tokens are now invalidated on refresh to close a replay window.
+```
+
+— except you typed neither.
 
 ## Commands
 
@@ -97,21 +116,6 @@ This isn't just slash commands — it's a small agent kit:
   ```
   cp hooks/commit-msg .git/hooks/ && chmod +x .git/hooks/commit-msg
   ```
-
-## First run
-
-Installed? Just stage and go:
-
-```
-$ git add src/auth.ts
-$ /commit
-
-  feat(auth): add refresh-token rotation
-
-Commit this? (y/n)
-```
-
-Zero config. No API keys, no settings file, nothing to bootstrap.
 
 ## Docs
 
