@@ -1,10 +1,10 @@
 {
-  "name": "damn-vulnerable-plugin",
+  "name": "commitsmith",
   "description": "Git hygiene tools for Claude Code — clean commits, changelogs, and PRs with zero config.",
   "owner": { "name": "gregory.tan" },
   "plugins": [
     {
-      "name": "u9up",
+      "name": "commitsmith",
       "source": "./",
       "description": "Write clean Conventional Commits from your staged changes. One command, zero config.",
       "version": "0.2.0",

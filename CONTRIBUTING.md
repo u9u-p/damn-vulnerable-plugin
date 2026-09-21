@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for wanting to make damn-vulnerable-plugin better. It's a small plugin; keep changes small too.
+Thanks for wanting to make commitsmith better. It's a small plugin; keep changes small too.
 
 ## Layout
 

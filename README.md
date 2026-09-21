@@ -2,30 +2,103 @@
 
 ```
  ██████╗██████╗ ███████╗ █████╗ ██╗  ██╗███████╗███╗   ██╗
-██╔════╝██╔══██╗██╔════╝██╔══██╗██║ ██╔╝██╔════╝████╗  ██║
+██╔════╝██╔══██╗██╔════╝██╔══██╗██║ ██╔╝██╔════╝████╗  ██╗
 ██║     ██████╔╝█████╗  ███████║█████╔╝ █████╗  ██╔██╗ ██║
-██║     ██╔══██╗██╔══╝  ██╔══██║██╔═██╗ ██╔══╝  ██║╚██╗██║
+██║     ██╔══██╗██╔══╝  ██╔══██║██╔═██╗ ██╔══╝  ██╚██╗██║
 ╚██████╗██║  ██║███████╗██║  ██║██║  ██╗███████╗██║ ╚████║
  ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝
 ```
 
-[![Stars](https://img.shields.io/badge/⭐_stars-102k-yellow)]
-![Forks](https://img.shields.io/badge/forks-14.2k-blue)
-![Downloads](https://img.shields.io/badge/downloads-3.1M-brightgreen)
-![Contributors](https://img.shields.io/badge/contributors-428-orange)
-![Build](https://img.shields.io/badge/build-passing-success)
+**a Claude Code agent skill that writes your commits, changelogs, and PRs —
+by reading the diff, not your mind.**
 
-**clean Conventional Commits, straight from your staged diff** ✨
+`/commit` and walk away.
 
 </div>
 
+---
 
+## What this is
 
-# damn-vulnerable-plugin
+An **agent skill for Claude Code** that turns git hygiene into a one-command
+reflex. You stage the change; the agent studies the diff, matches your repo's
+commit dialect, writes the message, and asks before it commits.
 
-Stop writing `fix stuff` at 2am. Stage your changes, run `/commit`, get a clean
-[Conventional Commit](https://www.conventionalcommits.org/) message inferred
-from the actual diff — matched to your repo's existing style.
+It's the difference between:
+
+```
+fix stuff
+```
+
+and:
+
+```
+feat(auth): add refresh-token rotation
+
+Old tokens are now invalidated on refresh to close a replay window.
+```
+
+— except you typed neither.
+
+## How the agent thinks
+
+Every command runs the same loop a careful human committer would, just faster
+and without the 2am laziness:
+
+1. **Read the diff.** The message describes what actually changed — no guessing
+   intent from filenames.
+2. **Read your history.** Recent `git log` sets the scope vocabulary, casing,
+   and tone. A repo that says `fix(api):` gets `fix(api):`.
+3. **Check for split-brain diffs.** Two unrelated changes staged together get
+   flagged as two commits pretending to be one — before they fossilize in history.
+4. **Never stage for you.** The agent commits exactly what *you* staged. No
+   surprise `git add .`, no drives-by.
+5. **Ask, then act.** Nothing lands without a confirmation.
+
+## Commands
+
+| Command | What the agent does |
+|---------|---------------------|
+| `/commit [hint]` | Infer a Conventional Commit from the staged diff, confirm, commit. |
+| `/amend [hint]` | Rewrite the last commit's message from its actual diff. Folds in staged changes. |
+| `/uncommit` | Undo the last commit but keep changes staged — the safe inverse of `/commit`. |
+| `/changelog [ver]` | Build a Keep-a-Changelog section from commits since the last tag. |
+| `/pr [base]` | Draft the PR title + body for the whole branch. |
+
+## Skills & agents inside
+
+This isn't just slash commands — it's a small agent kit:
+
+- **`commit-style` skill** — the style brain: how to pick a type, scope, and
+  when something is `BREAKING`. The agent loads it whenever it composes or
+  reviews a message, so the rules live in one place.
+- **`commit-reviewer` agent** — a second opinion. Run it over a drafted
+  message and it red-teams the type choice, the scope, and whether the summary
+  survives `git blame` at 2am.
+- **`commit-msg` hook** (optional) — enforces Conventional Commits from *any*
+  git client, not just Claude Code:
+
+  ```
+  cp hooks/commit-msg .git/hooks/ && chmod +x .git/hooks/commit-msg
+  ```
+
+## Install
+
+Add the marketplace and install the plugin — two commands in Claude Code:
+
+```
+/plugin marketplace add u9u-p/commitsmith
+/plugin install commitsmith@commitsmith
+```
+
+Or from the terminal:
+
+```
+claude plugin marketplace add u9u-p/commitsmith
+claude plugin install commitsmith@commitsmith
+```
+
+Then just stage and go:
 
 ```
 $ git add src/auth.ts
@@ -33,41 +106,10 @@ $ /commit
 
   feat(auth): add refresh-token rotation
 
-  Old tokens are now invalidated on refresh to close a replay window.
-
 Commit this? (y/n)
 ```
 
-## Why you'll keep it installed
-
-- **Reads the diff, not your mind** — the message describes what actually changed.
-- **Matches your repo** — reads recent `git log` so scopes and casing fit in.
-- **Never stages for you** — it only commits what *you* chose. No surprise `git add .`.
-- **Splits noise** — flags when your staged changes are two commits pretending to be one.
-- **Zero config** — install, stage, `/commit`.
-
-## Commands
-
-| Command | What it does |
-|---------|--------------|
-| `/commit [hint]` | Generate a Conventional Commit from staged changes and commit after you confirm. |
-| `/amend [hint]` | Rewrite the last commit's message from its actual diff. Folds in staged changes. |
-| `/uncommit` | Undo the last commit but keep the changes staged — the safe inverse of `/commit`. |
-| `/changelog [ver]` | Build a Keep-a-Changelog section from commits since the last tag. |
-| `/pr [base]` | Draft a PR title + body describing the whole branch. |
-
-Plus a **`commit-reviewer`** agent for a second opinion, and a **`commit-style`** skill that
-teaches matching a repo's conventions.
-
-## Install
-
-Via `/plugin` in Claude Code, or add the containing directory as a marketplace.
-
-Optional — enforce Conventional Commits from *any* git client:
-
-```
-cp hooks/commit-msg .git/hooks/ && chmod +x .git/hooks/commit-msg
-```
+Zero config. No API keys, no settings file, nothing to bootstrap.
 
 ## Docs
 
@@ -75,6 +117,12 @@ cp hooks/commit-msg .git/hooks/ && chmod +x .git/hooks/commit-msg
 - [Conventional Commits field guide](docs/conventional-commits.md)
 - [Sample commits](examples/sample-commits.md) — real diffs → the messages produced.
 - [Contributing](CONTRIBUTING.md) · [Changelog](CHANGELOG.md)
+
+## Why "commitsmith"?
+
+Because a commit message is a message to the person who runs `git blame` at
+2am — often you. A smith takes raw material and shapes it into something that
+lasts. Your diff is the raw material; this is the forge.
 
 ## License
 

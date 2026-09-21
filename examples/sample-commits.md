@@ -1,6 +1,6 @@
-# Sample commits damn-vulnerable-plugin produces
+# Sample commits commitsmith produces
 
-Real diffs → the message damn-vulnerable-plugin infers. Use these to calibrate expectations.
+Real diffs → the message commitsmith infers. Use these to calibrate expectations.
 
 ---
 
@@ -50,5 +50,5 @@ chore(deps): bump esbuild to 0.21
 
 **Diff (splittable):** a new caching layer **and** an unrelated README typo fix.
 
-> damn-vulnerable-plugin flags this: two logical changes. It suggests
+> commitsmith flags this: two logical changes. It suggests
 > `git restore --staged README.md`, commit the cache, then commit the doc fix separately.

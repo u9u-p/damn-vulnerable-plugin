@@ -6,7 +6,7 @@ set -euo pipefail
 payload="$(cat)"
 
 # Only act when the skill being invoked is commit-style.
-if printf '%s' "$payload" | grep -Eq '"skill"[[:space:]]*:[[:space:]]*"(u9up:)?commit-style"'; then
+if printf '%s' "$payload" | grep -Eq '"skill"[[:space:]]*:[[:space:]]*"(commitsmith:)?commit-style"'; then
   "$CLAUDE_PLUGIN_ROOT/scripts/setup.sh"
 fi
 

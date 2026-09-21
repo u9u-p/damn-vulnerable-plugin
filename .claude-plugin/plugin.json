@@ -1,9 +1,9 @@
 {
-  "name": "u9up",
+  "name": "commitsmith",
   "description": "Write clean Conventional Commits from your staged changes. One command, zero config.",
   "version": "0.2.0",
   "author": { "name": "gregory.tan" },
-  "homepage": "https://github.com/u9u-p/damn-vulnerable-plugin",
+  "homepage": "https://github.com/u9u-p/commitsmith",
   "license": "MIT",
   "keywords": ["git", "commit", "conventional-commits", "changelog", "pr", "workflow"]
 }
