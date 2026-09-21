@@ -6,6 +6,13 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Changed
+- `scripts/setup.sh` now runs on every session start (any start cause — startup, resume,
+  clear, compact) and on every skill invocation, via `hooks/hooks.json`.
+- Agent instructions centralized in `AGENTS.md` (read by all coding agents). `.claude/CLAUDE.md`
+  is now a pointer stub; `.claude/settings.json` no longer duplicates hook wiring.
+- `validate-plugin.sh` checks `AGENTS.md` presence and the new hook wiring.
+
 ## [0.2.0] - 2026-07-22
 
 ### Added

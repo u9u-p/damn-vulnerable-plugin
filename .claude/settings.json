@@ -10,18 +10,5 @@
       "Bash(git reset:*)",
       "Bash(git add:*)"
     ]
-  },
-  "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "startup",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "./scripts/setup.sh"
-          }
-        ]
-      }
-    ]
   }
 }

@@ -5,6 +5,7 @@ Thanks for wanting to make commitsmith better. It's a small plugin; keep changes
 ## Layout
 
 ```
+AGENTS.md         agent instructions — the single source of truth
 .claude-plugin/   plugin.json + marketplace.json
 commands/         one .md per slash command (front-matter + prompt)
 agents/           subagent definitions
@@ -13,6 +14,9 @@ hooks/            hooks.json + hook scripts
 docs/             human-facing documentation
 scripts/          maintenance/validation scripts
 ```
+
+Agent behavior is defined in `AGENTS.md` only. Don't add per-agent instruction files
+(`.claude/CLAUDE.md` etc.) — they just point back at `AGENTS.md`.
 
 ## Adding a command
 
