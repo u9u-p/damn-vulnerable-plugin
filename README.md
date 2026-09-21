@@ -1,12 +1,12 @@
 <div align="center">
 
 ```
- ██████╗██████╗ ███████╗ █████╗ ██╗  ██╗███████╗███╗   ██╗
-██╔════╝██╔══██╗██╔════╝██╔══██╗██║ ██╔╝██╔════╝████╗  ██╗
-██║     ██████╔╝█████╗  ███████║█████╔╝ █████╗  ██╔██╗ ██║
-██║     ██╔══██╗██╔══╝  ██╔══██║██╔═██╗ ██╔══╝  ██╚██╗██║
-╚██████╗██║  ██║███████╗██║  ██║██║  ██╗███████╗██║ ╚████║
- ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝
+ ██████╗ ██████╗ ███████╗██╗██████╗ ███████╗███████╗██╗ ██████╗ ███╗   ██╗
+██╔════╝██╔═══██╗██╔════╝██║██╔══██╗██╔════╝██╔════╝██║██╔═══██╗████╗  ██║
+██║  ██║██║   ██║█████╗  ██║██║  ██║█████╗  █████╗  ██║██║   ██║██╔██╗ ██║
+██║  ██║██║   ██║██╔══╝  ██║██║  ██║██╔══╝  ██╔══╝  ██║██║   ██║██║╚██╗██║
+╚██████║╚██████╔╝███████╗██║██████╔╝███████╗███████╗██║╚██████╔╝██║ ╚████║
+ ╚═════╝ ╚═════╝ ╚══════╝╚═╝╚═════╝ ╚══════╝╚══════╝╚═╝ ╚═════╝ ╚═╝  ╚═══╝
 ```
 
 **a Claude Code agent skill that writes your commits, changelogs, and PRs —
@@ -14,6 +14,16 @@ by reading the diff, not your mind.**
 
 `/commit` and walk away.
 
+
+```bash
+# in Claude Code:
+/plugin marketplace add u9u-p/commitsmith
+/plugin install commitsmith@commitsmith
+
+# or from the terminal:
+claude plugin marketplace add u9u-p/commitsmith
+claude plugin install commitsmith@commitsmith
+```
 </div>
 
 ---
@@ -82,23 +92,9 @@ This isn't just slash commands — it's a small agent kit:
   cp hooks/commit-msg .git/hooks/ && chmod +x .git/hooks/commit-msg
   ```
 
-## Install
+## First run
 
-Add the marketplace and install the plugin — two commands in Claude Code:
-
-```
-/plugin marketplace add u9u-p/commitsmith
-/plugin install commitsmith@commitsmith
-```
-
-Or from the terminal:
-
-```
-claude plugin marketplace add u9u-p/commitsmith
-claude plugin install commitsmith@commitsmith
-```
-
-Then just stage and go:
+Installed? Just stage and go:
 
 ```
 $ git add src/auth.ts
