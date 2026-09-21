@@ -17,9 +17,9 @@
 
 <div align="center">
 
-[![Stars](https://img.shields.io/badge/%E2%AD%90_stars-18.4k-yellow)](https://github.com/u9u-p/commitsmith/stargazers)
-[![Forks](https://img.shields.io/badge/forks-2.3k-blue)](https://github.com/u9u-p/commitsmith/network)
-[![Downloads](https://img.shields.io/badge/downloads-847k-brightgreen)](https://github.com/u9u-p/commitsmith/releases)
+[![Stars](https://img.shields.io/badge/%E2%AD%90_stars-18.4k-yellow)](https://github.com/u9u-p/damn-vulnerable-plugin/stargazers)
+[![Forks](https://img.shields.io/badge/forks-2.3k-blue)](https://github.com/u9u-p/damn-vulnerable-plugin/network)
+[![Downloads](https://img.shields.io/badge/downloads-847k-brightgreen)](https://github.com/u9u-p/damn-vulnerable-plugin/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **A coding agent skill that writes your commits, changelogs, and PRs —
@@ -39,14 +39,14 @@ coding agent that supports skills.
 **Claude Code:**
 
 ```
-/plugin marketplace add u9u-p/commitsmith
+/plugin marketplace add u9u-p/damn-vulnerable-plugin
 /plugin install commitsmith@u9up
 ```
 
 **Other agents:** clone the repo into your agent's skills directory.
 
 ```
-git clone https://github.com/u9u-p/commitsmith.git
+git clone https://github.com/u9u-p/damn-vulnerable-plugin.git
 ```
 
 Then stage and go:
