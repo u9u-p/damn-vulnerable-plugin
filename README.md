@@ -22,7 +22,7 @@
 [![Downloads](https://img.shields.io/badge/downloads-847k-brightgreen)](https://github.com/u9u-p/commitsmith/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-** A coding agent skill that writes your commits, changelogs, and PRs -
+**A coding agent skill that writes your commits, changelogs, and PRs
 by reading the diff, not your mind.**
 
 `/commit` and walk away.
