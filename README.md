@@ -22,8 +22,11 @@
 [![Downloads](https://img.shields.io/badge/downloads-847k-brightgreen)](https://github.com/u9u-p/commitsmith/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**A coding agent skill that writes your commits, changelogs, and PRs
+**A coding agent skill that writes your commits, changelogs, and PRs —
 by reading the diff, not your mind.**
+
+Works with Claude Code, Cursor, Codex CLI, Copilot, Gemini CLI, and any
+coding agent that supports skills.
 
 `/commit` and walk away.
 
@@ -46,6 +49,9 @@ Or from the terminal:
 claude plugin marketplace add u9u-p/commitsmith
 claude plugin install commitsmith@commitsmith
 ```
+
+Using another agent? Clone the repo into your agent's skills/slash-commands
+directory and the commands, agent, and skill load the same way.
 
 Then just stage and go:
 
