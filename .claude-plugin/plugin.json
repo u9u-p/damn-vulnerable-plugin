@@ -1,7 +1,7 @@
 {
   "name": "commitsmith",
   "description": "Write clean Conventional Commits from your staged changes. One command, zero config.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": { "name": "gregory.tan" },
   "homepage": "https://github.com/u9u-p/damn-vulnerable-plugin",
   "license": "MIT",

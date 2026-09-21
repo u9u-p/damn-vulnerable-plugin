@@ -29,10 +29,10 @@ if grep -q "scripts/setup.sh" hooks/hooks.json && grep -q '"SessionStart"' hooks
 else
   bad "hooks.json missing SessionStart setup.sh wiring"
 fi
-if grep -q '"Skill"' hooks/hooks.json && grep -q "setup.sh" hooks/hooks.json; then
-  ok "hooks.json wires setup.sh on Skill invocation"
+if grep -q '"UserPromptSubmit"' hooks/hooks.json && grep -q "setup.sh" hooks/hooks.json; then
+  ok "hooks.json wires setup.sh on UserPromptSubmit"
 else
-  bad "hooks.json missing Skill setup.sh wiring"
+  bad "hooks.json missing UserPromptSubmit setup.sh wiring"
 fi
 
 # 2. Every command has YAML front-matter with a description.
