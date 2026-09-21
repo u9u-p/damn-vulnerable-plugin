@@ -40,7 +40,7 @@ coding agent that supports skills.
 
 ```
 /plugin marketplace add u9u-p/commitsmith
-/plugin install commitsmith@commitsmith
+/plugin install commitsmith@u9up
 ```
 
 **Other agents:** clone the repo into your agent's skills directory.

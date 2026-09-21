@@ -1,14 +1,23 @@
 {
-  "name": "commitsmith",
-  "description": "Git hygiene tools for Claude Code — clean commits, changelogs, and PRs with zero config.",
-  "owner": { "name": "gregory.tan" },
+  "name": "u9up",
+  "description": "Git hygiene tools for Claude Code \u2014 clean commits, changelogs, and PRs with zero config.",
+  "owner": {
+    "name": "grg0rry"
+  },
   "plugins": [
     {
       "name": "commitsmith",
       "source": "./",
       "description": "Write clean Conventional Commits from your staged changes. One command, zero config.",
       "version": "0.2.0",
-      "keywords": ["git", "commit", "conventional-commits", "changelog", "pr", "workflow"]
+      "keywords": [
+        "git",
+        "commit",
+        "conventional-commits",
+        "changelog",
+        "pr",
+        "workflow"
+      ]
     }
   ]
 }
